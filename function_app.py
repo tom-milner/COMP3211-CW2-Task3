@@ -36,19 +36,17 @@ def generate_sensor_readings(timer: func.TimerRequest) -> None:
 
     # Generate readings.
     num_sensors = 20
-    readings_per_sensor = 1
     readings = list()
     for i in range(num_sensors):
-        for j in range(readings_per_sensor):
-            # NOTE: randrange is min inclusive, max exclusive (hence the +1)
-            reading = {
-                "sensor_id": i,
-                "temp": random.randrange(8, 15 + 1),
-                "wind_speed": random.randrange(15, 25 + 1),
-                "rel_humidity": random.randrange(40, 70 + 1),
-                "co2": random.randrange(500, 1500 + 1),
-            }
-            readings.append(reading)
+        # NOTE: randrange is min inclusive, max exclusive (hence the +1)
+        reading = {
+            "sensor_id": i,
+            "temp": random.randrange(8, 15 + 1),
+            "wind_speed": random.randrange(15, 25 + 1),
+            "rel_humidity": random.randrange(40, 70 + 1),
+            "co2": random.randrange(500, 1500 + 1),
+        }
+        readings.append(reading)
 
     logging.info(f"Generated {len(readings)} readings.")
 
